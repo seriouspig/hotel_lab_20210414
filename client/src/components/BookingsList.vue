@@ -1,6 +1,6 @@
 <template>
     <div>
-        <booking v-for="(booking, index) in bookings" :key="index" :booking="booking" />  
+        <booking  v-for="(booking, index) in bookings" :key="index" :booking="booking" />  
     </div>
 </template>
 
@@ -16,6 +16,6 @@ export default {
 }
 </script>
 
-<style>
+<style >
 
 </style>

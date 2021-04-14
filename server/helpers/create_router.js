@@ -38,6 +38,16 @@ const createRouter = function (collection) {
         .catch((err) => error500(err));
     })
 
+    router.put('/:id', (req, res) => {
+        const id = req.params.id;
+        const newData = req.body;
+        collection.findOneAndUpdate({_id:ObjectId(id)}, {$set:newData}, {returnOriginal:false})
+        .then((updatedDoc) => {
+            res.json(updatedDoc.value)
+        })
+        .catch((err) => error500(err));
+    })
+
 
     return router;
 };

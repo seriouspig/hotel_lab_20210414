@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <h1>Hotel Bookings</h1>
     <bookings-form></bookings-form>
-    <bookings-list :bookings="bookings" />
+    <bookings-list class="booking-list" :bookings="bookings" />
   </div>
 </template>
 
@@ -32,6 +33,12 @@ export default {
       let index = this.bookings.findIndex((booking) => booking._id === id)
       this.bookings.splice(index, 1)
     })
+    eventBus.$on('booking-updated', (booking) => {
+      console.log(booking)
+      let index = this.bookings.findIndex((bookingN) => bookingN._id === booking._id)
+      this.bookings[index] = booking
+      console.log(this.bookings[index])
+    })
   },
   methods: {
     fetchBookings() {
@@ -43,12 +50,29 @@ export default {
 </script>
 
 <style>
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  /* margin-top: 60px; */
+  background-image: url(https://static-cse.canva.com/blob/140234/Rainbow-Gradient-Pink-and-Purple-Zoom-Virtual-Background.png);
+}
+.booking-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 </style>

@@ -13,7 +13,7 @@
             <input type="checkbox" id="checkin" v-model="checkin" value="true">
             <label for="checkin">Checked in</label>
         </div>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="button">
     </form>
   
 </template>
@@ -46,6 +46,12 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.button {
+    padding: 7px 15px;
+    background-color: black;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.199);
+    border-radius: .25rem;
+}
 </style>
